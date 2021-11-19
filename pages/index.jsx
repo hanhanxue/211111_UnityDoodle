@@ -33,14 +33,13 @@ export default function Doodles( {doodles}) {
       console.log(doodle.coverImage.publicFilePath)
       return (
 
-          <NextLink href={`/doodles/${doodle.slug}`}>
+          <NextLink href={`/doodles/${doodle.slug}`} key={index}>
 
 <div className={`${styles.nextImageDiv} ${styles.BorderMargin_6}`}>
           <NextImage 
         src={doodle.coverImage.publicFilePath}
         width={doodle.coverImage.fileMeta.width}
         height={doodle.coverImage.fileMeta.height}
-        key={index}
       />
        
        </div>     
