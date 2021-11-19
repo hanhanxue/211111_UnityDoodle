@@ -1,0 +1,179 @@
+
+@import "../abstracts/variables";
+@import "../abstracts/functions";
+
+
+
+
+
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter/Inter-SemiBold.woff2') format('woff2'),
+        url('/fonts/Inter/Inter-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter/Inter-Medium.woff2') format('woff2'),
+        url('/fonts/Inter/Inter-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter/Inter-Regular.woff2') format('woff2'),
+        url('/fonts/Inter/Inter-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Menlo';
+    src: url('/fonts/Menlo/Menlo-Regular.woff2') format('woff2'),
+        url('/fonts/Menlo/Menlo-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
+// 100 Thin (Hairline)
+// 200 Extra Light (Ultra Light)
+// 300 Light
+
+// 400 Normal (Regular)
+
+// 500 Medium
+// 600 Semi Bold (Demi Bold)
+// 700 Bold
+
+// 800 Extra Bold (Ultra Bold)
+// 900 Black (Heavy)
+// 950 Extra Black (Ultra Black) 
+
+
+.title_1 {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-style: normal;
+
+    font-size: rem(64);
+    line-height: rem(88);
+
+    @include respond(phone_Portrait_S) { // < 640
+        font-size: 42px;
+        line-height: 58px;
+    }
+}
+
+.title_2 {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-style: normal;
+
+    font-size: rem(40);
+    line-height: rem(56);
+
+    @include respond(phone_Portrait_S) { // < 640
+        font-size: 26px;
+        line-height: 36px;
+    }
+}
+
+.title_3 {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-style: normal;
+  
+    font-size: rem(28);
+    line-height: rem(40);
+}
+
+.headline {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-style: normal;
+  
+    font-size: rem(21);
+    line-height: rem(32);
+}
+
+.body_1 {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-style: normal;
+    //letter-spacing: -.02em;
+  
+    font-size: rem(21);
+    line-height: rem(32);
+}
+
+.subhead {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-style: normal;
+
+    font-size: rem(16);
+    line-height: rem(24);
+
+    @include respond(phone_Landscape) { // < 640
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+
+
+// FIXED
+
+.body_2 {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-style: normal;
+  
+    font-size: 16px;
+    line-height: 28px;
+
+    @include respond(phone_Portrait) { // < 640
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
+.caption {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-style: normal;
+  
+    font-size: 14px;
+    line-height: 24px;
+
+    @include respond(phone_Portrait) { // < 640
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+.code {
+    font-family: 'Menlo';
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: 14px;
+    line-height: 20px;
+
+    @include respond(phone_Portrait) { // < 640
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+

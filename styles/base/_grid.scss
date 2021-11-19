@@ -1,0 +1,173 @@
+
+
+
+.section {
+    // default light and dark wouldn't make sense standalone that's why they are combined
+    // for wrapper workList shareSingle make sense as standalone classes
+    &Default {
+        background-color: $color-gray-900;
+        color: $color-text-primary;
+    }
+
+    &Light {
+        background-color: $color-main-white;
+        color: $color-text-primary;
+    }
+
+    &Dark {
+        background-color: $color-gray-100;
+        color: $color-text-white;
+    }
+}
+
+
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  
+    padding-left: $grid-spacing-48;
+    padding-right: $grid-spacing-48;
+
+    @include respond(phone_Portrait) {
+        padding-left: $grid-spacing-12;
+        padding-right: $grid-spacing-12;
+    }
+
+    &Default {
+        max-width: 1680px;
+    }
+    
+    &Share {
+        max-width: 1476px;
+    }
+
+    &SharePost {
+        max-width: 864px;
+    }
+
+
+}
+
+
+
+.letterbox {
+    &_48 {
+        padding-top: $grid-spacing-48;
+        padding-bottom: $grid-spacing-48;
+    }
+
+    &_64 {
+        padding-top: $grid-spacing-64;
+        padding-bottom: $grid-spacing-64;
+    }
+
+    &_64_128 {
+        padding-top: $grid-spacing-64;
+        padding-bottom: $grid-spacing-128;
+    }
+
+    &_0_128 {
+        padding-bottom: $grid-spacing-128;
+    }
+}
+
+
+
+
+.tilesContainer {
+    margin: $grid-spacing-neg6;
+
+    &Flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.textAlignCenter {
+    text-align: center;
+}
+
+
+
+
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+
+    flex-shrink: 1;
+    flex-grow: 0;
+
+    align-items: flex-start;
+  
+    .columnHeader {
+        margin-bottom: $grid-spacing-24;
+  
+        &Centered {
+            text-align: center;
+        }
+    }
+  
+    .column {
+        padding-right: $grid-spacing-24;
+        padding-left: $grid-spacing-24;
+
+        &_1x {
+            flex-basis: 25%;
+        }
+        &_2x {
+            flex-basis: 50%;
+    
+        }
+        &_4x {
+            flex-basis: 100%;
+
+        }
+
+        &_618 {
+            flex-basis: 61.8%;
+        }
+
+        &_382 {
+            flex-basis: 38.2%;
+
+            // display: flex;
+            // flex-direction: column;
+        }
+
+        &ForceBottomMargin {
+            margin-bottom: $grid-spacing-64;
+        }
+
+        @include respond(tablet_Portrait) {
+            &_1x {
+                flex-basis: 50%;
+
+                &:nth-child(1), &:nth-child(2){
+                    margin-bottom: $grid-spacing-64;
+                }
+            }
+        }
+
+
+        @include respond(phone_Portrait) {
+            margin-bottom: $grid-spacing-64;
+
+            &_1x, &_2x, &_618, &_382 {
+                flex-basis: 100%;
+                text-align: center;
+            }
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+
+            // Used on Info Page between Friends and Resources
+            &_phoneBottom128 {
+                margin-bottom: $grid-spacing-128;
+            }
+        }
+    }
+}
+  
+
+

@@ -1,0 +1,64 @@
+
+
+@import "./functions";
+
+
+
+
+
+
+// Color
+
+$color-main-primary: #EC1C24;
+$color-main-white: #FFFFFF;
+$color-main-black: #000000;
+
+
+
+
+$color-gray-100: #121212;
+
+$color-gray-600: #6B6B6B;
+$color-gray-650: #888888;
+$color-gray-700: #AEAEAE;
+$color-gray-900: #F6F6F6;
+
+
+
+
+$color-text-primary: #0f0f0f;
+$color-text-secondary: #868686;
+$color-text-white: #F6F6F6;
+
+
+
+
+
+
+// Grid
+
+
+$grid-spacing-neg6: rem(-6);
+$grid-spacing-6: rem(6);
+
+
+$grid-spacing-12: rem(12);
+
+
+$grid-spacing-24: rem(24);
+$grid-spacing-48: rem(48);
+$grid-spacing-64: rem(64);
+
+
+$grid-spacing-128: rem(128);
+
+
+
+
+
+
+// Timing
+
+$anim-timing-snappy: 0.2s;
+$anim-timing-lazy: 2.2s;
+

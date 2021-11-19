@@ -1,0 +1,65 @@
+
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
+@import "./base/base";
+@import "./base/grid";
+@import "./base/typography";
+
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+
+
+HTML, body, * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  }
+
+
+// a {
+//   text-decoration: none;
+//   color: $color-text-primary;
+// }
+
+h1 {
+  margin: 0;
+  font-weight: unset;
+}
+
+h2 {
+  margin: 0;
+  font-weight: unset;
+}
+
+h3 {
+  margin: 0;
+  font-weight: unset;
+}
+
+ul {
+  list-style: none;
+}
+  
+
+b, strong {
+  font-weight: 600;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+
+

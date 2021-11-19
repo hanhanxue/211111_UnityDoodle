@@ -1,0 +1,60 @@
+// MEDIA QUERY MANAGER
+/*
+
+0 - 600px:        SMALL PHONE
+600 - 768px:        PHONE
+768 - 960px:      TABLET PORTRAIT
+960 - 1200px:     TABLET LANDSCAPE
+1200 - 1440px:    DESKTOP   
+1440 - inf:       LARGE DESKTOP  [MAIN]
+
+*/
+
+/*
+$breakpoint argument choices:
+- phoneS
+- phone
+- tabS
+- tab
+- deskS
+
+
+*/
+@mixin respond($breakpoint) {
+
+
+    @if $breakpoint == desktop_S {
+        @media (max-width: 90em) { @content };    
+    }
+
+
+
+
+    
+    @if $breakpoint == tablet_Landscape {
+        @media (max-width: 78em) { @content };    // 80
+    }
+
+    //LAYOUT CHANGE
+    @if $breakpoint == tablet_Portrait {
+        @media (max-width: 66em) { @content };    // 63
+    }
+    
+
+
+    @if $breakpoint == phone_Landscape {
+        @media (max-width: 56em) { @content };  //52
+    }
+
+
+    //LAYOUT CHANGE
+    @if $breakpoint == phone_Portrait {
+        @media (max-width: 48em) { @content };  //44
+    }
+
+    @if $breakpoint == phone_Portrait_S {
+        @media (max-width: 32em) { @content };  
+    }
+
+
+}
