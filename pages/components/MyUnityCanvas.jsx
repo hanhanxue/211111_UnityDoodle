@@ -5,17 +5,6 @@ import Unity, {UnityContext} from "react-unity-webgl"
 
 const MyUnityCanvas = (  {unityContextData}) => {
 
-    if (unityContextData !== "undefined") {
-        const style = {
-            width: unityContextData.width,
-            height: unityContextData.height,
-          }
-    }
-    else
-    {
-        return null
-    }
-
 
 
     if (typeof window !== "undefined") {
@@ -25,6 +14,11 @@ const MyUnityCanvas = (  {unityContextData}) => {
             frameworkUrl: unityContextData.frameworkUrl,
             codeUrl: unityContextData.codeUrl,
         })
+
+        const style = {
+            width: unityContextData.width,
+            height: unityContextData.height,
+          }
     }
     else
     {
