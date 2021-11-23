@@ -28,13 +28,11 @@ const MyUnityCanvas = (  {unityContextData}) => {
 
 
     return (
-        <>
 
         <div style = {{textAlign: 'center'}}>
             <Unity unityContext={unityContext} style={style}/>
         </div>
 
-        </>
     )
 }
 

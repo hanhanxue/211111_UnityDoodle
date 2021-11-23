@@ -30,6 +30,7 @@ import MyUnityCanvas from './components/MyUnityCanvas'
 
 // 04 My Styles
 import styles from '../styles/Doodles.module.scss'
+import { SSL_OP_TLS_ROLLBACK_BUG } from 'constants'
 
 
 
@@ -45,7 +46,22 @@ export default function Home( {doodle_props} ) {
 
   const filteredDoodle = doodle_props.filter( i => i.scope.slug === router.query.doodleID) 
 
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      //marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      //verticalAlign: 'bottom',
+      lineHeight: 0,
+    },
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
 
+    }
+  };
 
   return (
     <>
@@ -82,7 +98,11 @@ export default function Home( {doodle_props} ) {
     </main>
 
 
-    <Modal isOpen={!!router.query.doodleID} onRequestClose={() => router.push("/")}>
+    <Modal 
+    isOpen={!!router.query.doodleID} 
+    onRequestClose={() => router.push("/")}
+    style={customStyles}
+    >
 
     {  filteredDoodle[0] && <MyUnityCanvas unityContextData={filteredDoodle[0].scope.unityContextData} />}
     </Modal>
@@ -207,7 +227,7 @@ export const getStaticProps = async() => {
 
   await Promise.all(doodles_directories.map(genProps))
 
-
+  doodle_props = doodle_props.reverse()
 
   return {
     props: {
