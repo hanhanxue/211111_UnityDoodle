@@ -11,6 +11,10 @@ const MyUnityCanvas = (  {unityContextData}) => {
             height: unityContextData.height,
           }
     }
+    else
+    {
+        return null
+    }
 
 
 
