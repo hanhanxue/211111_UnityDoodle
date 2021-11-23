@@ -227,11 +227,11 @@ export const getStaticProps = async() => {
 
   await Promise.all(doodles_directories.map(genProps))
 
-  doodle_props = doodle_props.reverse()
+  const doodle_props_reversed = doodle_props.reverse()
 
   return {
     props: {
-      doodle_props,
+      doodle_props: doodle_props_reversed,
     }
   }
 
