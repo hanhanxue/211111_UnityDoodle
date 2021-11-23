@@ -84,7 +84,7 @@ export default function Home( {doodle_props} ) {
 
     <Modal isOpen={!!router.query.doodleID} onRequestClose={() => router.push("/")}>
 
-    {/* {  filteredDoodle[0] && <MyUnityCanvas unityContextData={filteredDoodle[0].scope.unityContextData} />} */}
+    {  filteredDoodle[0] && <MyUnityCanvas unityContextData={filteredDoodle[0].scope.unityContextData} />}
     </Modal>
     </>
   )
