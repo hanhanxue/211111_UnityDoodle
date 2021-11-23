@@ -11,7 +11,7 @@ import path from 'path'
 const Doodle = (  {  unityContextData }) => {
 
 
-    //console.log(      unityContextData.width)
+
     const style = {
         width: unityContextData.width,
         height: unityContextData.height,
@@ -40,13 +40,12 @@ const Doodle = (  {  unityContextData }) => {
 
     return (
 
-        <>
         <div style = {{textAlign: 'center'}}>
-        <Unity unityContext={unityContext} 
-              style={style}/>
+                <Unity unityContext={unityContext} 
+                    style={style}/>
         </div>
 
-        </>
+      
     )
 
 
@@ -116,9 +115,7 @@ const directory = directories.filter(d => {
 
 
     const buildPath = path.join(root, 'public', 'doodles', directory, 'Build')
-
     let content = fs.readdirSync(buildPath)
-    
     const buildName = content[0].split('.')[0]
 
 
