@@ -6,8 +6,6 @@
 import fs from 'fs'
 import path from 'path'
 
-
-//const sizeOf = require('image-size')
 import sizeOf from 'image-size'
 import {useRouter} from "next/router"
 import matter from 'gray-matter'
@@ -30,7 +28,6 @@ import MyUnityCanvas from './components/MyUnityCanvas'
 
 // 04 My Styles
 import styles from '../styles/Doodles.module.scss'
-import { SSL_OP_TLS_ROLLBACK_BUG } from 'constants'
 
 
 
@@ -38,14 +35,15 @@ import { SSL_OP_TLS_ROLLBACK_BUG } from 'constants'
 Modal.setAppElement("#__next")
 
 
-export default function Home( {doodle_props} ) {
+export default function Home( {doodles_props} ) {
 
 
   const router = useRouter()
 
 
-  const filteredDoodle = doodle_props.filter( i => i.scope.slug === router.query.doodleID) 
+  const filteredDoodle = doodles_props.filter( i => i.scope.slug === router.query.doodleID) 
 
+  // TODO Convert to CSS
   const customStyles = {
     content: {
       top: '50%',
@@ -70,7 +68,7 @@ export default function Home( {doodle_props} ) {
     <div className={`letterbox_64_128`}>
     <div className={`tilesContainer textAlignCenter`}>
 
-      {doodle_props.map((doodle, index) => {
+      {doodles_props.map((doodle, index) => {
         return (
    
             <NextLink 
@@ -122,12 +120,7 @@ export const getStaticProps = async() => {
   // ROOT
   const root = process.cwd()
 
-
-  let doodle_props = [] // 
-
   const doodles_localDir = path.join(root, 'public', 'doodles')    // D:\C_2021\1111_UnityPrototypes\1d\unity-doodle\public\doodles
-
-
 
   let doodles_directories = fs.readdirSync(doodles_localDir)
   doodles_directories = doodles_directories.filter(i => i.match(/^\_/g) === null )  // Filter underscore
@@ -137,13 +130,25 @@ export const getStaticProps = async() => {
 
 
 
-  const genProps = async (d) => {
+  let doodles_props = [] // 
+  const genProps = async (current_dir) => {
     
     let customData = {}
 
-    const dateRezName = d.split('_')
+
+    // DOODLE FOLDER
+    const doodle_localDir = path.join(root, 'public', 'doodles', current_dir)   // D:\C_2021\1111_UnityPrototypes\1d\unity-doodle\public\doodles\211115_512x512_Ratio
+    const doodle_publicDir = path.join('/doodles', current_dir)
+    const doodle_content = fs.readdirSync(doodle_localDir)  // \doodles\211117_1024x768_Drive Mode Camera Transitions
+
+
+    // MDX Gray Matter
+    const mdx_localPath = path.join(doodle_localDir, 'index.mdx')
+    const {content, data} = matter(fs.readFileSync(mdx_localPath, 'utf-8'))
+
 
     // Date / Resolution / Name / Slug
+    const dateRezName = current_dir.split('_')
     customData.date = dateRezName[0] ? '20' + dateRezName[0] : 'ERROR'    // ADD TO CUSTOMDATA
     customData.rez = dateRezName[1] ? dateRezName[1] : 'ERROR'     // ADD TO CUSTOMDATA
     customData.name = dateRezName[2] ? dateRezName[2] : 'ERROR'   // ADD TO CUSTOMDATA
@@ -151,14 +156,7 @@ export const getStaticProps = async() => {
     customData.slug = dateRezName[2] ? dateRezName[2].replace(/\s+/g, '-').toLowerCase() : 'ERROR'    // ADD TO CUSTOMDATA
 
 
-    // DOODLE FOLDER
-    const doodle_localDir = path.join(root, 'public', 'doodles', d)   // D:\C_2021\1111_UnityPrototypes\1d\unity-doodle\public\doodles\211115_512x512_Ratio
-    const doodle_publicDir = path.join('/doodles', d)
-    const doodle_content = fs.readdirSync(doodle_localDir)  // \doodles\211117_1024x768_Drive Mode Camera Transitions
 
-    // MDX Gray Matter
-    const mdx_localPath = path.join(doodle_localDir, 'index.mdx')
-    const {content, data} = matter(fs.readFileSync(mdx_localPath, 'utf-8'))
 
 
     // COVER Image
@@ -188,9 +186,9 @@ export const getStaticProps = async() => {
         coverSizeOf.width = coverSizeOf.height * ratio
     }
 
-
-
     customData.coverImage = {coverImage_publicPath, coverSizeOf}   // ADD TO CUSTOMDATA
+
+
 
 
 
@@ -199,11 +197,10 @@ export const getStaticProps = async() => {
     let build_publicPath = path.join(doodle_publicDir, 'Build')
     build_publicPath = build_publicPath.replace(/\\/g, "/")   // /doodles/211117_1024x768_Drive Mode Camera Transitions/Build
     const build_content = fs.readdirSync(build_localPath)
-    // console.log(build_publicPath)
 
     const buildName = build_content[0].split('.')[0]
-    const buildWidth = parseInt(d.split('_')[1].split('x')[0])
-    const buildHeight = parseInt(d.split('_')[1].split('x')[1])
+    const buildWidth = parseInt(current_dir.split('_')[1].split('x')[0])
+    const buildHeight = parseInt(current_dir.split('_')[1].split('x')[1])
 
     let unityContextData = {}
     unityContextData.loaderUrl = path.join(build_publicPath, `${buildName}.loader.js`).replace(/\\/g, "/") 
@@ -217,21 +214,22 @@ export const getStaticProps = async() => {
     customData.unityContextData = unityContextData    // ADD TO CUSTOMDATA
 
 
+    // Serialize
     const mdxSource = await serialize(content, {
       scope: customData
     })
 
-    doodle_props.push(mdxSource)
+    doodles_props.push(mdxSource)
   }
 
 
   await Promise.all(doodles_directories.map(genProps))
 
-  const doodle_props_reversed = doodle_props.reverse()
+  const doodles_props_reversed = doodles_props.reverse()
 
   return {
     props: {
-      doodle_props: doodle_props_reversed,
+      doodles_props: doodles_props_reversed,
     }
   }
 
