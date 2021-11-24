@@ -34,7 +34,7 @@ const Doodle = (  {  doodle_props }) => {
     return (
         <>
             <div style = {{textAlign: 'center', marginTop: '24px', marginBottom: '24px'}}>
-                <button onClick={ () => router.push("/") }>Back</button>
+                <button onClick={ () => router.push("/") } style={{cursor: 'pointer'}}>Back</button>
             </div>
             <div style = {{textAlign: 'center'}}>
                     <MyUnityCanvas unityContextData={doodle_props.scope.unityContextData} />
