@@ -22,26 +22,29 @@ import NextLink from 'next/link'
 
 
 // 03 My Components
-import MyUnityCanvas from './components/MyUnityCanvas'
+import MyUnityCanvas from '../components/MyUnityCanvas'
 
 
 
 // 04 My Styles
 import styles from '../styles/Doodles.module.scss'
-
-
-
+import modalStyles from '../components/Modal.module.scss'
 
 Modal.setAppElement("#__next")
 
-
-export default function Home( {doodles_props} ) {
-
+const Home = ( {doodles_props} ) => {
 
   const router = useRouter()
 
-
   const filteredDoodle = doodles_props.filter( i => i.scope.slug === router.query.doodleID) 
+
+  const closeModal = () => {
+    router.push("/")
+  }
+
+  const afterOpenModal = () => {
+    console.log("f afterOpenModal")
+  }
 
   // TODO Convert to CSS
   const customStyles = {
@@ -50,16 +53,19 @@ export default function Home( {doodles_props} ) {
       left: '50%',
       right: 'auto',
       bottom: 'auto',
-      //marginRight: '-50%',
+
       transform: 'translate(-50%, -50%)',
-      //verticalAlign: 'bottom',
+
       lineHeight: 0,
     },
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.8)',
-
     }
   };
+
+
+
+
 
   return (
     <>
@@ -97,35 +103,39 @@ export default function Home( {doodles_props} ) {
 
 
     <Modal 
-    isOpen={!!router.query.doodleID} 
-    onRequestClose={() => router.push("/")}
-    style={customStyles}
+      isOpen={!!router.query.doodleID}
+      onAfterOpen={afterOpenModal} 
+      onRequestClose={closeModal}
+      style={customStyles}
+      contentLabel="hanhanxue"
     >
-
-    {  filteredDoodle[0] && <MyUnityCanvas unityContextData={filteredDoodle[0].scope.unityContextData} />}
+      {  filteredDoodle[0] && <MyUnityCanvas unityContextData={filteredDoodle[0].scope.unityContextData} />}
     </Modal>
     </>
   )
-
-
 }
 
 
+export default Home
 
 
 
 
-export const getStaticProps = async() => {
 
-  // ROOT
-  const root = process.cwd()
 
-  const doodles_localDir = path.join(root, 'public', 'doodles')    // D:\C_2021\1111_UnityPrototypes\1d\unity-doodle\public\doodles
 
-  let doodles_directories = fs.readdirSync(doodles_localDir)
+
+
+
+export const getStaticProps = async () => {
+
+  // P_root
+  const P_root = process.cwd()
+  const P_doodles_dir = path.join(P_root, 'public', 'doodles')    // D:\C_2021\1111_UnityPrototypes\1d\unity-doodle\public\doodles
+
+
+  let doodles_directories = await fs.promises.readdir(P_doodles_dir)
   doodles_directories = doodles_directories.filter(i => i.match(/^\_/g) === null )  // Filter underscore
-
-
 
 
 
@@ -137,7 +147,7 @@ export const getStaticProps = async() => {
 
 
     // DOODLE FOLDER
-    const doodle_localDir = path.join(root, 'public', 'doodles', current_dir)   // D:\C_2021\1111_UnityPrototypes\1d\unity-doodle\public\doodles\211115_512x512_Ratio
+    const doodle_localDir = path.join(P_root, 'public', 'doodles', current_dir)   // D:\C_2021\1111_UnityPrototypes\1d\unity-doodle\public\doodles\211115_512x512_Ratio
     const doodle_publicDir = path.join('/doodles', current_dir)
     const doodle_content = fs.readdirSync(doodle_localDir)  // \doodles\211117_1024x768_Drive Mode Camera Transitions
 
@@ -227,10 +237,16 @@ export const getStaticProps = async() => {
 
   const doodles_props_reversed = doodles_props.reverse()
 
+
+
+
+
+
+
+
   return {
     props: {
       doodles_props: doodles_props_reversed,
     }
   }
-
 }

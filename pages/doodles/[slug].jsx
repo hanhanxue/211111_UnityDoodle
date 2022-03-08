@@ -20,7 +20,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 
 // 03 My Components
-import MyUnityCanvas from '../../components/MyUnityCanvas'
+import MyUnityCanvas from '../../../components/MyUnityCanvas'
 
 // 04 My Styles
 
