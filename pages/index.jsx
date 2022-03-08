@@ -240,10 +240,6 @@ export const getStaticProps = async () => {
 
 
 
-
-
-
-
   return {
     props: {
       doodles_props: doodles_props_reversed,
