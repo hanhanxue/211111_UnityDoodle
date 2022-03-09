@@ -140,8 +140,23 @@ export const getStaticProps = async () => {
 
 
 
-  let doodles_props = [] // 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const genProps = async (current_dir) => {
+
     
     let customData = {}
 
@@ -229,18 +244,50 @@ export const getStaticProps = async () => {
       scope: customData
     })
 
-    doodles_props.push(mdxSource)
+    //console.log(mdxSource)
+
+
+    //doodles_props.push(current_dir)
+    //console.log(doodles_props)
+
+
+    //doodles_props.push(mdxSource)
+    return mdxSource
+
   }
 
 
-  await Promise.all(doodles_directories.map(genProps))
+
+
+  //await Promise.all(doodles_directories.map(genProps))
+  // doodles_directories.forEach(e => {
+  //   //console.log(e)
+  //   genProps(e)
+  //   setTimeout(() => {}, 500)
+  // })
+
+
+  
+  let doodles_props = [] 
+
+  doodles_props = await Promise.all(doodles_directories.map(genProps))
+
+
+
+
+  // doodles_directories.forEach(async e => {
+  //   //console.log(e)
+
+  //   let result
+  //   result =  await genProps(e)
+  //   //console.log(result)
+  //   doodles_props.push(result)
+  //   //console.log(doodles_props)
+  // })
+
+
 
   const doodles_props_reversed = doodles_props.reverse()
-
-
-
-
-
 
 
 
@@ -250,3 +297,4 @@ export const getStaticProps = async () => {
     }
   }
 }
+
