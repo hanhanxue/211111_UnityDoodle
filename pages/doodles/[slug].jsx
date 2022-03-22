@@ -20,7 +20,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 
 // 03 My Components
-import MyUnityCanvas from '../../../components/MyUnityCanvas'
+import MyUnityCanvas from '../../components/MyUnityCanvas'
 
 // 04 My Styles
 
@@ -31,11 +31,16 @@ const Doodle = (  {  doodle_props }) => {
 
     const router = useRouter()
 
+    const {slug} = router.query;
+    console.log(slug)
+
     return (
         <>
             <div style = {{textAlign: 'center', marginTop: '24px', marginBottom: '24px'}}>
                 <button onClick={ () => router.push("/") } style={{cursor: 'pointer'}}>Back</button>
             </div>
+
+
             <div style = {{textAlign: 'center'}}>
                     <MyUnityCanvas unityContextData={doodle_props.scope.unityContextData} />
             </div>
@@ -45,6 +50,23 @@ const Doodle = (  {  doodle_props }) => {
 
 
 export default Doodle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

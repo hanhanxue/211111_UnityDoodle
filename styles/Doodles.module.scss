@@ -14,3 +14,22 @@
   .BorderMargin_6 {
     margin: $grid-spacing-6;
   }
+
+
+
+
+  .ReactModel {
+    position: absolute;
+    top: '50%';
+    left: '50%';
+    right: 'auto';
+    bottom: 'auto';
+    transform: 'translate(-50%, -50%)';
+    line-height: 0;
+    //marginRight: '-50%',
+    //verticalAlign: 'bottom',
+}
+
+.ReactModelOverlay {
+    background-color: 'rgba(0, 0, 0, 0.8)';
+}

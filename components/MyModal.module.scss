@@ -1,0 +1,102 @@
+
+
+.modalOverlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .8);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalWrapper {
+    background-color: rebeccapurple;
+}
+
+
+
+
+
+
+
+
+
+
+
+// .modalWrapper {
+//     width: 90vw; /* 90% of viewport vidth */
+//     height: 50.625vw; /* ratio = 9/16 * 90 = 50.625 */
+//     background: red;
+//     max-height: 90vh;
+//     max-width: 160vh; /* 16/9 * 90 = 160 */
+//     margin: auto;
+//     position: absolute;
+//     top:0;bottom:0;
+//     left:0;right:0;
+
+//     .modal {
+//         background-color: green;
+//         border-radius: 12px;
+
+//         position: absolute;
+//         top: 0; right: 0; bottom: 0; left: 0;
+
+//         display: flex;
+//     }
+
+// }
+
+
+
+
+
+
+
+
+
+
+// .modalWrapper {
+
+//     background-color: red;
+//     margin: 120px;
+
+//     width: 1584px;
+//     //height: 1096px;
+//     position: relative;
+
+//     &::after {
+//         padding-top: calc(1096 / 1584 * 100%);
+//         display: block;
+//         content: '';
+//     }
+
+
+
+//     .modal {
+//         position: absolute;
+//         top: 0; right: 0; bottom: 0; left: 0;
+//         padding: 24px;
+
+//         display: flex;
+
+//         background-color: green;
+//         border-radius: 12px;
+
+//         .modalLeftFrame {
+//             flex-basis: 50%;
+//             background-color: black;
+//         }
+    
+//         .modalRightFrame {
+//             //position: absolute;
+//             flex-basis: 50%;
+//             background-color: white;
+//         }
+//     }
+// }
+
+
