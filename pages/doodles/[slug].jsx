@@ -29,24 +29,29 @@ import MyUnityCanvas from '../../components/MyUnityCanvas'
 
 const Doodle = (  {  doodle_props }) => {
 
-    const router = useRouter()
+    // const router = useRouter()
 
-    const {slug} = router.query;
-    console.log(slug)
+    // const {slug} = router.query;
+    // console.log(slug)
+
+    // return (
+    //     <>
+    //         <div style = {{textAlign: 'center', marginTop: '24px', marginBottom: '24px'}}>
+    //             <button onClick={ () => router.push("/") } style={{cursor: 'pointer'}}>Back</button>
+    //         </div>
+
+
+    //         <div style = {{textAlign: 'center'}}>
+
+    //                 <MyUnityCanvas unityContextData={doodle_props.scope.unityContextData} />
+
+    //         </div>
+    //     </>
+    // )
 
     return (
         <>
-            <div style = {{textAlign: 'center', marginTop: '24px', marginBottom: '24px'}}>
-                <button onClick={ () => router.push("/") } style={{cursor: 'pointer'}}>Back</button>
-            </div>
-
-
-            <div style = {{textAlign: 'center'}}>
-
-                    <MyUnityCanvas unityContextData={doodle_props.scope.unityContextData} />
-                    
-            </div>
-        </>
+        TODO</>
     )
 }
 
