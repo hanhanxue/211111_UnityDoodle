@@ -42,7 +42,9 @@ const Doodle = (  {  doodle_props }) => {
 
 
             <div style = {{textAlign: 'center'}}>
+
                     <MyUnityCanvas unityContextData={doodle_props.scope.unityContextData} />
+                    
             </div>
         </>
     )

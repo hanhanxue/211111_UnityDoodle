@@ -47,7 +47,7 @@ ReactModal.setAppElement("#__next")
 const Home = ( {doodles} ) => {
 
   const router = useRouter()
-  const selectedDoodle = doodles.filter(i => i.slug === router.query.doodleSlug) 
+  const selectedDoodle = doodles.filter(i => i.slug === router.query.doodleSlug)[0] 
 
 
   return (
@@ -83,12 +83,20 @@ const Home = ( {doodles} ) => {
     </main>
 
 
-    {selectedDoodle[0] && 
+    {selectedDoodle && 
     <MyModal
       isOpen={!!router.query.doodleSlug}
       onRequestClose={() => router.push("/")}
+      doodleRatio={selectedDoodle.unityContextData.ratio}
+      doodleDefaultDimensions={selectedDoodle.unityContextData.defaultDimensions}
+      unityContextData={selectedDoodle.unityContextData}
     >
-      {/* {selectedDoodle[0] && <MyUnityCanvas unityContextData={selectedDoodle[0].unityContextData} />} */}
+      
+      {/* <MyUnityCanvas 
+        unityContextData={selectedDoodle.unityContextData} 
+        doodleDimensions={doodleDimensions}
+      /> */}
+
     </MyModal>}
 
 
@@ -125,13 +133,20 @@ export const getStaticProps = async () => {
 
 
 
-    // {/* <ReactModal 
-    //   isOpen={!!router.query.doodleSlug} // when I click, the URL will have a query param called doodleSlug, !! convert into a Bool
-    //   onRequestClose={() => router.push("/")}
-    // >
-    //   {  selectedDoodle[0] && <MyUnityCanvas unityContextData={selectedDoodle[0].unityContextData} />}
 
-    // </ReactModal> */}
+
+
+
+
+/* {selectedDoodle[0] && <MyUnityCanvas unityContextData={selectedDoodle[0].unityContextData} />} */
+
+// {/* <ReactModal 
+//   isOpen={!!router.query.doodleSlug} // when I click, the URL will have a query param called doodleSlug, !! convert into a Bool
+//   onRequestClose={() => router.push("/")}
+// >
+//   {  selectedDoodle[0] && <MyUnityCanvas unityContextData={selectedDoodle[0].unityContextData} />}
+
+// </ReactModal> */}
 
 
 

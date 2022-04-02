@@ -13,16 +13,85 @@
     justify-content: center;
 }
 
-.modalWrapper {
-    background-color: rebeccapurple;
+.modal {
+
+
+    display: flex;
+
+
+
+    &LeftFrame {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        // small spacing issue
+        //   vertical-align: bottom;
+        line-height: 0;
+
+
+        background-image: /* tint image */
+        linear-gradient(to right, rgba(255, 255, 255, .75), rgba(255, 255, 255, .75)),
+        /* checkered effect */
+        linear-gradient(to right, black 50%, white 50%),
+        linear-gradient(to bottom, black 50%, white 50%);
+
+
+        background-blend-mode: normal, difference, normal;
+        background-size: 1em 1em;
+
+    }
+
+    &RightFrame {
+
+        background-color: white;
+
+    }
 }
 
 
 
+    //background-color: rebeccapurple;
+
+    // border-radius: 0 00 00 0;
+    // overflow: hidden;
 
 
 
+        // background-color: #fff;
+        // background-image: linear-gradient(
+        //     45deg,
+        //     #000 25%,
+        //     transparent 25%,
+        //     transparent 75%,
+        //     #000 75%,
+        //     #000
+        //   ),
+        //   linear-gradient(
+        //     90deg,
+        //     #000 25%,
+        //     transparent 25%,
+        //     transparent 75%,
+        //     #000 75%,
+        //     #000
+        //   );
+        // background-size: 32px 32px;
+        // background-repeat: repeat;
 
+
+
+        // background-color: red;
+
+        // background-image: 
+        // linear-gradient(45deg, #ffffff 25%, transparent 25%), 
+        // linear-gradient(-45deg, #ffffff 25%, transparent 25%), 
+        // linear-gradient(45deg, transparent 75%, #ffffff 75%), 
+        // linear-gradient(-45deg, transparent 75%, #ffffff 75%);
+
+        // background-size: 32px 32px;
+        // background-position: 0 0, 0 16px, 16px -16px, -16px 0px;
 
 
 
