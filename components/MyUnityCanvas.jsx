@@ -3,7 +3,7 @@
 import Unity, {UnityContext} from "react-unity-webgl"
 
 
-const MyUnityCanvas = (  {unityContextData}) => {
+const MyUnityCanvas = (  {unityContextData, doodleDimensions}) => {
 
 
 
@@ -15,10 +15,15 @@ const MyUnityCanvas = (  {unityContextData}) => {
             codeUrl: unityContextData.codeUrl,
         })
 
+        // const style = {
+        //     width: unityContextData.defaultDimensions.width,
+        //     height: unityContextData.defaultDimensions.height,
+        // }
         const style = {
-            width: unityContextData.width,
-            height: unityContextData.height,
-          }
+            width: doodleDimensions.width,
+            height: doodleDimensions.height,
+        }
+
     }
     else
     {
@@ -38,3 +43,18 @@ const MyUnityCanvas = (  {unityContextData}) => {
 
 
 export default MyUnityCanvas
+
+
+
+
+
+
+
+        // const style = {
+        //     width: doodleDimensions.wdith,
+        //     height: doodleDimensions.height,
+        //   }
+        // const style = {
+        //     width: unityContextData.defaultWidth,
+        //     height: unityContextData.defaultHeight,
+        //   }
