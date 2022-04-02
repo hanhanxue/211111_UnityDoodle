@@ -199,14 +199,6 @@ export const getStaticProps = async () => {
 // C_doodlesDir = C_doodlesDir.filter(i => i.match(/^\_/g) === null )  // Filter underscore
 
 
-<<<<<<< HEAD
-  return {
-    props: {
-      doodles_props: doodles_props_reversed,
-    }
-  }
-}
-=======
 
 
 // const genProps = async (current_dir) => {
@@ -313,4 +305,3 @@ export const getStaticProps = async () => {
 
   //doodles = await Promise.all(C_doodlesDir.map(genProps))
 
->>>>>>> hhx/fixOrderIssue
