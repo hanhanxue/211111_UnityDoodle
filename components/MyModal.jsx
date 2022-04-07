@@ -16,7 +16,7 @@ import styles from './MyModal.module.scss'
 
 const MyModal = (props) => {
 
-
+    let count = 0
     const modalOverlayRef = useRef()
     const [frameSize, setFrameSize] = useState(100)
 
@@ -29,6 +29,8 @@ const MyModal = (props) => {
 
     // DEBOUNCE
     const debounce = (fn, ms) => {
+
+
         let timeoutId = null
         return () => {
             clearTimeout(timeoutId)
@@ -78,7 +80,23 @@ const MyModal = (props) => {
 
     const debouncedHandleWindowResize = debounce(handleWindowResize, 100)
 
+    // const debouncedHandleWindowResize = () => {
 
+    //     count += 1
+
+    //     // if(!(count % 4)){
+    //     //     //handleWindowResize()
+    //     //     //console.log(count)
+    //     //     return
+    //     // }
+
+    //     let timeoutId = null
+    //     clearTimeout(timeoutId)
+    //     timeoutId = setTimeout(() => {
+    //         handleWindowResize()
+    //     }, 1100)
+        
+    // }
 
 
     useLayoutEffect(() => {
@@ -129,7 +147,6 @@ const MyModal = (props) => {
 
 
             <div className={`${styles.modalLeftFrame}`} style={{width: frameSize, height: frameSize}}>
-                {props.children}
                 <MyUnityCanvas 
                     unityContextData={props.unityContextData} 
                     doodleDimensions={doodleDimensions}
@@ -137,7 +154,7 @@ const MyModal = (props) => {
             </div>
 
             <div className={`${styles.modalRightFrame}`} style={{width: 460}}>
-
+            {props.children}
             </div>
 
 

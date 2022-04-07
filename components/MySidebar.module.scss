@@ -1,0 +1,65 @@
+@import "../styles/abstracts/variables";
+@import "../styles/abstracts/mixins";
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+}
+
+
+
+.headerFrame {
+    padding: 16px 20px;
+
+    display: flex;
+    justify-content: space-between;
+
+    &Title {
+        //display: inline-block;
+
+        // small spacing issue
+
+      
+    }
+    &Subtitle {
+
+        color: $color-gray-650;
+    }
+
+    align-items: center;
+}
+
+
+.bodyFrame {
+    padding: 16px 20px;
+
+}
+
+.footerFrame {
+    margin-top: auto;
+    padding: 16px 20px;
+}
+
+
+.hr {
+    height: 1px;
+    background-color: $color-gray-900;
+}
+
+.block {
+    padding: 16px 20px;
+}
+
+.defaultButton {
+    padding: 10px 20px;
+    border-radius: 24px;
+}

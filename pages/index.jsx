@@ -18,14 +18,9 @@ import ReactModal from "react-modal"
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 
-import {useState, useEffect, useLayoutEffect} from 'react'
-
+import { MDXRemote } from 'next-mdx-remote'
 
 // 02 My Libs
-
-
-// 03 My Components
-
 import {getCustomMetadata, getStaticContent} from '../lib/serverUtils'
 
 
@@ -33,6 +28,7 @@ import {getCustomMetadata, getStaticContent} from '../lib/serverUtils'
 // 03 My Components
 import MyUnityCanvas from '../components/MyUnityCanvas'
 import MyModal from '../components/MyModal'
+import Sidebar from '../components/MySidebar'
 
 // 04 My Styles
 //import styles from '../styles/Doodles.module.scss'
@@ -49,7 +45,7 @@ const Home = ( {doodles} ) => {
   const router = useRouter()
   const selectedDoodle = doodles.filter(i => i.slug === router.query.doodleSlug)[0] 
 
-
+  //console.log(selectedDoodle)
   return (
     <>
     <main className={`section sectionDefault`}>
@@ -58,23 +54,31 @@ const Home = ( {doodles} ) => {
     <div className={`tilesContainer textAlignCenter`}>
 
 
-      {doodles.map((doodle, index) => (
-        <NextLink 
-          key={index}
-          href = {`/?doodleSlug=${doodle.slug}`}   // the page in nextjs that is linked to (what nextJS will see) ? is a query parameter
-          as = {`/doodles/${doodle.slug}`}   // what shows up in the URL
-        >
-          <a>
-            <div className={`nextImageDiv BorderMargin_6`}>
-              <NextImage 
-                src={doodle.cover.P_STATIC}
-                width={doodle.cover.width}
-                height={doodle.cover.height}
-              />
-            </div>     
-          </a>
-        </NextLink>
-      ))}
+      {doodles.map((doodle, index) => {
+
+             return (    
+
+              <NextLink 
+              key={index}
+              href = {`/?doodleSlug=${doodle.slug}`}   // the page in nextjs that is linked to (what nextJS will see) ? is a query parameter
+              as = {`/doodles/${doodle.slug}`}   // what shows up in the URL
+            >
+
+              <a>
+                <div className={`nextImageDiv BorderMargin_6`}>
+
+                  <NextImage 
+                    src={doodle.cover.P_STATIC}
+                    width={doodle.cover.width}
+                    height={doodle.cover.height}
+                  />
+                </div>     
+              </a>
+            </NextLink>
+    
+            )
+
+             })}
 
 
     </div>
@@ -96,6 +100,11 @@ const Home = ( {doodles} ) => {
         unityContextData={selectedDoodle.unityContextData} 
         doodleDimensions={doodleDimensions}
       /> */}
+      <Sidebar 
+        date={selectedDoodle.date}
+        name={selectedDoodle.name}
+        MDXSource={selectedDoodle.MDXSource}
+      />
 
     </MyModal>}
 
@@ -121,7 +130,9 @@ export const getStaticProps = async () => {
 
   const C_doodlesDir = getStaticContent('doodles')
   let doodles = [] 
-  doodles = C_doodlesDir.map(dir => getCustomMetadata(dir)).reverse()
+  doodles =    await Promise.all( C_doodlesDir.map((dir) => getCustomMetadata(dir)).reverse()   )
+
+  //console.log(doodles[0].MDXSource)
 
   return {
     props: {

@@ -10,8 +10,9 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "image-size": "^1.0.0",
+    "moment": "^2.29.2",
     "next": "12.0.4",
-    "next-mdx-remote": "^3.0.8",
+    "next-mdx-remote": "^4.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-modal": "^3.14.4",
