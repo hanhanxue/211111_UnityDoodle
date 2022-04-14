@@ -1,4 +1,6 @@
 
+
+// 04 My Styles
 import styles from './MyMDXComponents.module.scss'
 
 
@@ -28,20 +30,42 @@ const H2 = (props) =>  (
 
 )
 
+// const InlineCode = (props) => (
+//     <code {...props} className={`body_1 ${styles.inlineCode}`} />
+// )
 
+
+// const Code = ({children, className}) => {
+
+
+//     return (
+// <>
+// gwasdf
+// </>
+//     )
+// }
+
+// const Pre = props => <pre style={{ color: 'red' }} {...props} />
+// const Code = props => <code style={{ fontWeight: 600 }} {...props} />
+
+
+
+// const InlineCode = (props) => (
+//     <code {...props} className={`code ${styles.inlineCode}`} />
+// )
+
+const Code = (props) => (
+    <code {...props} className={`code ${styles.inlineCode}`} />
+)
 
 const ShareMDXComponents = {
-    // SectionTitle: SectionTitle,
-    // SingleImage: SingleImage,
-    // Video: Video,
     p: P,
     h2: H2,
-    // h3: H3,
     ul: Ul,
     li: Li,
-    // code: Code,
-    // inlineCode: InlineCode,
-    // a: Link,
+    //inlineCode: InlineCode,
+    // pre: Pre,
+    code: Code,
 }
 
 export default ShareMDXComponents

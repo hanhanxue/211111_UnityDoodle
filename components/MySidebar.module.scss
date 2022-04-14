@@ -5,6 +5,8 @@
 .sidebar {
     display: flex;
     flex-direction: column;
+    background-color: black;
+    color: white;
 
 
     position: absolute;
@@ -14,6 +16,9 @@
     left: 0;
 
 }
+
+
+
 
 
 
@@ -39,6 +44,9 @@
 }
 
 
+
+
+
 .bodyFrame {
     padding: 16px 20px;
 
@@ -50,9 +58,12 @@
 }
 
 
+
+
+
 .hr {
     height: 1px;
-    background-color: $color-gray-900;
+    background-color: $color-gray-600;
 }
 
 .block {

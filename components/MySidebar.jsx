@@ -12,7 +12,7 @@ import MyMDXComponents from './MyMDXComponents'
 import styles from './MySidebar.module.scss'
 
 const Sidebar = (props) => {
-    //console.log(props.MDXSource.frontmatter.categories[0])
+
 
     return (
         <>
@@ -24,7 +24,7 @@ const Sidebar = (props) => {
 
                 <div className={`${styles.headerFrameLeft}`}>
                     <h2 className={`${styles.headerFrameTitle} title_2`}>{props.name}</h2>
-                    <span className={`${styles.headerFrameSubtitle} caption_1`}>{props.MDXSource.frontmatter.softwares[0]} · {props.MDXSource.frontmatter.categories[0]}</span>
+                    <span className={`${styles.headerFrameSubtitle} caption_1`}>{props.MDXSource.frontmatter.softwares[0]} • {props.MDXSource.frontmatter.categories[0]}</span>
                 </div>
 
                 <div className={`${styles.headerFrameRight}`}>
@@ -34,11 +34,11 @@ const Sidebar = (props) => {
 
             </div>
 
-            <hr className={`${styles.hr}`} />
+            {/* <hr className={`${styles.hr}`} /> */}
 
 
             <div className={`${styles.bodyFrame}`}>
-                
+
               <MDXRemote {...props.MDXSource} components={MyMDXComponents}/>
 
             </div>
@@ -47,8 +47,8 @@ const Sidebar = (props) => {
 
 
             <div className={`${styles.footerFrame}`}>
-                <p className={`subtitle_1`}>{`${moment(props.date).format('MMMM Do YYYY')}`}</p>
-                <span className={`subtitle_1`}> {`${moment(props.date).fromNow()}`}</span>
+                <p className={`subtitle_1`}>{`${moment(props.date).format('MMMM Do YYYY')}`}
+                <span className={`body_1`}> {`(${moment(props.date).fromNow()})`}</span></p>
             </div>
         </div>
         </>
