@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="stylesheet" href="mystyle.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+      <title>CarViz</title>
+  </head>
+  <body style="text-align: center">
+      <div></div>
+      <p>ALT + Left Mouse Click to Tumble / ALT + Middle Mouse Click to Pan / ALT + Right Mouse Click to Dolly.</p>
+    <canvas id="unity-canvas" style="width: 1920px; height: 1080px; background: #231F20"></canvas>
+    <script src="Build/210402A.loader.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/210402A.data",
+        frameworkUrl: "Build/210402A.framework.js",
+        codeUrl: "Build/210402A.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "unity",
+        productVersion: "0.1",
+      });
+    </script>
+  </body>
+</html>

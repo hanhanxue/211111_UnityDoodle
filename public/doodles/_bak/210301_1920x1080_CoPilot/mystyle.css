@@ -1,0 +1,21 @@
+canvas {
+    margin-top: 24px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+
+}
+
+body{
+    /*background: #212022;*/
+    background: #ecebee;
+}
+
+div{
+    margin-top: 72px;
+}
+
+p {
+    margin: 8px 0px 8px 0px;
+    font-family: 'Lato', sans-serif;
+    color: grey;
+}
