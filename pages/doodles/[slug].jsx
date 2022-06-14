@@ -33,7 +33,7 @@ const Doodle = (  {  doodle }) => {
 
     // const {slug} = router.query;
     // console.log(slug)
-    console.log(doodle.unityContextData)
+    //console.log(doodle.unityContextData)
 
     return (
         <>
